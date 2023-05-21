@@ -1,1 +1,18 @@
-<p>edit-server works!</p>
+<div class="container">
+    <h1>Edit Server</h1>
+    <form>
+      <div class="input-group">
+        <label for="title">Title</label>
+        <input type="text" id="title" [(ngModel)]="editServer.title" required>
+      </div>
+      <div class="input-group">
+        <label for="domain">Domain</label>
+        <input type="text" id="domain" [(ngModel)]="editServer.domain" required>
+      </div>
+      <div class="buttons">
+        <!-- <button type="butto(click)="saveServer()">Save</button> -->
+        <!-- <button type="button" (click)="goToListServers()">Exit</button> -->
+      </div>
+    </form>
+  </div>
+  

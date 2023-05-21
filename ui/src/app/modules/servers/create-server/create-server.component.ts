@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+// import {CreateServercomponent} from './create-server.component.html';
 
 @Component({
   selector: 'app-create-server',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./create-server.component.css']
 })
 export class CreateServerComponent {
-
+    
 }
