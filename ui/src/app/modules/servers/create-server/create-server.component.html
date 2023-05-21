@@ -1,112 +1,17 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Formulario</title>
-  <style>
-    body {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      background-color: #f1f1f1;
-      font-family: Arial, sans-serif;
-    }
-
-    .container {
-      background-color: #ffffff;
-      border-radius: 5px;
-      padding: 20px;
-      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-      width: 400px;
-      text-align: center;
-    }
-
-    h1 {
-      margin-top: 0;
-    }
-
-    .form-group {
-      margin-bottom: 15px;
-    }
-
-    .form-group label {
-      display: block;
-      text-align: left;
-      margin-bottom: 5px;
-      color: #333333;
-    }
-
-    .form-group input {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #cccccc;
-      border-radius: 4px;
-    }
-
-    .btn {
-      background-color: #3498db;
-      color: #ffffff;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 4px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    .btn:hover {
-      background-color: #2980b9;
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <h1>Formulario</h1>
-    <form>
-      <div class="form-group">
-        <label for="campo1">Campo 1</label>
-        <input type="text" id="campo1" placeholder="Ingrese el campo 1" required>
-      </div>
-      <div class="form-group">
-        <label for="campo2">Campo 2</label>
-        <input type="text" id="campo2" placeholder="Ingrese el campo 2" required>
-      </div>
-      <div class="form-group">
-        <label for="campo3">Campo 3</label>
-        <input type="text" id="campo3" placeholder="Ingrese el campo 3" required>
-      </div>
-      <!-- Repetir los campos para el campo 4 al campo 10 -->
-
-     <div class="form-group">
-        <label for="campo3">Campo 4</label>
-        <input type="text" id="campo4" placeholder="Ingrese el campo 4" required>
-      </div>
-
-       <div class="form-group">
-        <label for="campo3">Campo 3</label>
-        <input type="text" id="campo3" placeholder="Ingrese el campo 3" required>
-      </div>
-
-       <div class="form-group">
-        <label for="campo3">Campo 3</label>
-        <input type="text" id="campo3" placeholder="Ingrese el campo 3" required>
-      </div>
-
-       <div class="form-group">
-        <label for="campo3">Campo 3</label>
-        <input type="text" id="campo3" placeholder="Ingrese el campo 3" required>
-      </div>
-
-       <div class="form-group">
-        <label for="campo3">Campo 3</label>
-        <input type="text" id="campo3" placeholder="Ingrese el campo 3" required>
-      </div>
-
-
-
-
-      <button type="submit" class="btn">Guardar</button>
-      <button type="button" class="btn">Cancelar</button>
-    </form>
-  </div>
-</body>
-</html>
+<div class="container">
+  <h1>Add Server</h1>
+  <form>
+    <div class="input-group">
+      <label for="title">Title</label>
+      <input type="text" id="title" [(ngModel)]="newServer.title" required>
+    </div>
+    <div class="input-group">
+      <label for="domain">Domain</label>
+      <input type="text" id="domain" [(ngModel)]="newServer.domain" required>
+    </div>
+    <div class="buttons">
+      <!-- <button type="button" (click)="saveServer()" >Save</button> -->
+      <!-- <button type="button" (click)="goToListServers()" >Exit</button> -->
+    </div>
+  </form>
+</div>
