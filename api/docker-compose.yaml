@@ -1,0 +1,11 @@
+version: "3.3"
+services:
+  postgresql:
+    image: postgres:9.6-alpine
+    environment:
+      POSTGRES_USER: "aso"
+      POSTGRES_PASSWORD: "aso"
+      POSTGRES_DB: "aso"
+    ports:
+      - "5434:5432"
+    
