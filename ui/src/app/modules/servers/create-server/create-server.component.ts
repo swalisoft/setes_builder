@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-// import {CreateServercomponent} from './create-server.component.html';
+import { NgForm } from '@angular/forms';
+import { ServerService } from '../services/server.service';
 
 @Component({
   selector: 'app-create-server',
@@ -7,5 +8,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./create-server.component.css']
 })
 export class CreateServerComponent {
-    
+
+  constructor(private service: ServerService) {}
+
+  onSubmit(f: NgForm) {
+    console.log(f.value);
+
+    this.service.createServer(f.value).subscribe(resp => {
+      console.log(resp);
+    })
+  }
+
+  goToListServers() {
+
+  }
 }
+

@@ -1,33 +1,45 @@
-from flask import Flask
-import os
+from flask import Flask, request, jsonify
+from Postgres import Postgres
+
+from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
+CORS(app)
+# app.config['CORS_HEADERS'] = 'Content-Type'
 
-@app.route('/servers')
-def hello():
-<<<<<<< HEAD:api/hello.py
-    os.system('useradd nombe ')
- 
-    # guardar en la base de datao
-    return 'Hello Work'
+postgres = Postgres()
 
-@app.route('/listar')
-def hello():
-    # guardar en la base de datao
-    return 'Hello Work'
+@app.route('/servers', methods=['GET', 'POST'])
+def servers():
+  print(users)
+  # print(request.get_json())
 
-@app.route('/usuarios')
-def hello():
-    # guardar en la base de datao
-    return 'Hello Work'
+  if request.method == 'GET':
+    servers = postgres.fetch_all('SELECT * FROM servers')
+    response = jsonify(servers)
 
-@app.route('/login')
-def hello():
-    # guardar en la base de datao
-    return 'Hello Work'
-=======
-    return 'Hello Work'
+    return response
+  elif request.method == 'POST':
+    data = request.get_json()
+
+    postgres.execute(
+      'INSERT INTO servers(name, password) VALUES(%s, %s)',
+      (data['title'], data['domain'])
+    )
+
+    response = jsonify({"messaage":  "succesful crated"})
+
+    return response
+
+@app.route('/users')
+def users():
+  # guardar en la base de datao
+  return 'Hello Work'
+
+@app.route('/login', methods=['POST'])
+def login():
+  # guardar en la base de datao
+  return 'Hello Work'
 
 if __name__ == '__main__':
-    app.run()
->>>>>>> 92a6ba31e1f2be81bd6122b0aa38a72aa8c03b90:api/app.py
+  app.run(debug=True)
