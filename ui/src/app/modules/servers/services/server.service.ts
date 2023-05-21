@@ -7,8 +7,10 @@ import { HttpClient } from '@angular/common/http';
 export class ServerService {
   constructor(private http: HttpClient) { }
 
-  fethServers() {
-    return this.http.get<string>('http://localhost:5000/servers')
+  fetchServers() {
+    return this.http.get<any[][]>(
+      'http://localhost:5000/servers'
+    )
   }
 
   createServer(values = {}) {
