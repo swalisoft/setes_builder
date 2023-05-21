@@ -6,6 +6,9 @@
 /out-tsc
 /bazel-out
 
+**/env/**/*
+**/__pycache__/
+
 # Node
 /node_modules
 npm-debug.log
