@@ -12,10 +12,9 @@ export class CreateServerComponent {
   constructor(private service: ServerService) {}
 
   onSubmit(f: NgForm) {
-    console.log(f.value);  // { first: '', last: '' }
-    console.log(f.valid);  // false
+    console.log(f.value);
 
-    this.service.createServer().subscribe(resp => {
+    this.service.createServer(f.value).subscribe(resp => {
       console.log(resp);
     })
   }

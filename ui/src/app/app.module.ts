@@ -7,12 +7,16 @@ import { HomeComponent } from './modules/auth/home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreateServerComponent } from './modules/servers/create-server/create-server.component';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './modules/auth/login/login.component';
+import { RegisterComponent } from './modules/auth/register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     CreateServerComponent,
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,

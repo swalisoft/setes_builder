@@ -2,24 +2,40 @@ import psycopg2
 
 class Postgres:
   def __init__(self):
-    conn = psycopg2.connect(
+    self.conn = psycopg2.connect(
       database="aso",
       host="127.0.0.1",
       user="aso",
       password="aso",
       port="5434"
     )
-    self.cursor = conn.cursor()
 
-  def execute(self, query):
-    self.cursor.modify(query)
+  def execute(self, query, values):
+    cursor = self.conn.cursor()
+
+    cursor.execute(query, values)
+
+    cursor.close()
+    self.conn.commit()
 
   def fetch_all(self, query):
-    self.cursor.execute(query)
+    cursor = self.conn.cursor()
 
-    return self.cursor.fetchall()
+    cursor.execute(query)
+
+    datas = cursor.fetchall()
+
+    cursor.close()
+
+    return datas
 
   def fetch_one(self, query):
-    self.cursor.execute(query)
+    cursor = self.conn.cursor()
 
-    return self.cursor.fetchone()
+    cursor.execute(query)
+
+    datas = cursor.fetchone()
+
+    cursor.close()
+
+    return datas
