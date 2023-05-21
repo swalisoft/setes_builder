@@ -3,14 +3,24 @@
   <form #f="ngForm" (ngSubmit)="onSubmit(f)">
     <div class="input-group">
       <label for="title">Title</label>
-      <input type="text" id="title" required>
+      <input
+        type="text"
+        name="title"
+        ngModel
+        required
+      >
     </div>
     <div class="input-group">
       <label for="domain">Domain</label>
-      <input type="text" id="domain" required>
+      <input
+        type="text"
+        required
+        ngModel
+        name="domain"
+      >
     </div>
     <div class="buttons">
-      <button type="submit">Save</button>
+      <button type="submit">Crear Sitio</button>
       <button type="button" (click)="goToListServers()" >Exit</button>
     </div>
   </form>

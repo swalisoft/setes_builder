@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app.routing.module';
 import { HomeComponent } from './modules/auth/home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreateServerComponent } from './modules/servers/create-server/create-server.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { CreateServerComponent } from './modules/servers/create-server/create-se
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    HttpClientModule,
     ReactiveFormsModule,
   ],
   providers: [],
