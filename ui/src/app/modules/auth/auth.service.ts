@@ -19,4 +19,18 @@ export class AuthService {
       }
     )
   }
+  
+  register(values = {}) {
+    return this.http.post<string>(
+      'http://localhost:5000/register',
+      JSON.stringify(values),
+      {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }
+    )
+  }
+
+
 }
