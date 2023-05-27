@@ -1,8 +1,8 @@
-DROP TABLE IF EXISTS sites, servers, databases, servers;
+DROP TABLE IF EXISTS sites, servers, databases, users;
 CREATE TABLE users(
   id SERIAl PRIMARY KEY,
   "name" VARCHAR(20),
-  "user" VARCHAR(20),
+  "email" VARCHAR(20),
   "password" VARCHAR(20)
 );
 
