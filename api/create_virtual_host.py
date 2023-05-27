@@ -16,7 +16,6 @@ def create_virtualhost(host, nombre):
   with open(f'/etc/apache2/vhosts.d/{host}.conf', 'w') as f:
     f.write(data)
     
-
 #create_virtualhost("mita@gmail.com","mita")
 def create_server_user(passwds,users):
   os.system(f"sudo useradd -m {users} ")
