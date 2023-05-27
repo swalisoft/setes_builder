@@ -30,10 +30,10 @@ class Postgres:
 
     return datas
 
-  def fetch_one(self, query):
+  def fetch_one(self, query, values):
     cursor = self.conn.cursor()
 
-    cursor.execute(query)
+    cursor.execute(query, values)
 
     datas = cursor.fetchone()
 

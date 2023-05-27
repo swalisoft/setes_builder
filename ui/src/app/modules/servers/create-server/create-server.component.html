@@ -1,27 +1,88 @@
 <div class="container">
   <h1>Add Server</h1>
   <form #f="ngForm" (ngSubmit)="onSubmit(f)">
-    <div class="input-group">
-      <label for="title">Title</label>
+    <div class="form-group">
+      <label>user</label>
       <input
-        type="text"
-        name="title"
+        class="form-control"
+        placeholder="Ingrese el domino"
+        name="user"
         ngModel
-        required
       >
     </div>
-    <div class="input-group">
-      <label for="domain">Domain</label>
+    <div class="form-group">
+      <label>password</label>
       <input
-        type="text"
-        required
+        class="form-control"
+        placeholder="Ingrese el usuario"
+        name="password"
         ngModel
+      >
+    </div>
+    <div class="form-group">
+      <label>domain</label>
+      <input
+        class="form-control"
+        placeholder="Ingrese el usuario"
         name="domain"
+        ngModel
       >
     </div>
-    <div class="buttons">
-      <button type="submit">Crear Sitio</button>
-      <button type="button" (click)="goToListServers()" >Exit</button>
+    <div class="form-group">
+      <label>db_user</label>
+      <input
+        class="form-control"
+        placeholder="Ingrese el usuario"
+        name="db_user"
+        ngModel
+      >
     </div>
+    <div class="form-group">
+      <label>db_password</label>
+      <input
+        class="form-control"
+        placeholder="Ingrese el usuario"
+        ame="db_password"
+        ngModel
+      >
+    </div>
+    <div class="form-group">
+      <label>database</label>
+      <input
+        class="form-control"
+        placeholder="Ingrese el usuario"
+        ame="database"
+        ngModel
+      >
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
   </form>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
