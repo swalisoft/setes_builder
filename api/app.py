@@ -9,13 +9,14 @@ CORS(app)
 
 postgres = Postgres()
 
-@app.route('/servers', methods=['GET', 'POST'])
+@app.route('/servers', methods=['GET', 'POST', 'DELETE'])
 def servers():
-  print(users)
-  # print(request.get_json())
-
   if request.method == 'GET':
-    servers = postgres.fetch_all('SELECT * FROM servers')
+    user_id = request.args.get('user_id')
+    servers = postgres.fetch_all(
+      'SELECT * FROM servers WHERE user_id = %s',
+      (user_id)
+    )
     response = jsonify(servers)
 
     return response
