@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-register',
@@ -7,4 +9,19 @@ import { Component } from '@angular/core';
 })
 export class RegisterComponent {
 
+  constructor(private service: AuthService) {}
+
+  onSubmit(f: NgForm) {
+    console.log(f.value);
+
+    this.service.register(f.value).subscribe(resp => {
+      console.log(resp);
+    })
+  }
+
+  goToListServers() {
+
+  }
+
 }
+

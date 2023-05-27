@@ -9,6 +9,7 @@ import { CreateServerComponent } from './modules/servers/create-server/create-se
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './modules/auth/login/login.component';
 import { RegisterComponent } from './modules/auth/register/register.component';
+import { EditServerComponent } from './modules/servers/edit-server/edit-server.component';
 import { ListServersComponent } from './modules/servers/list-servers/list-servers.component';
 
 @NgModule({
@@ -18,6 +19,7 @@ import { ListServersComponent } from './modules/servers/list-servers/list-server
     CreateServerComponent,
     LoginComponent,
     RegisterComponent,
+    EditServerComponent,
     ListServersComponent,
   ],
   imports: [
