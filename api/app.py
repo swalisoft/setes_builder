@@ -23,8 +23,20 @@ def servers():
     data = request.get_json()
 
     postgres.execute(
-      'INSERT INTO servers(name, password) VALUES(%s, %s)',
-      (data['title'], data['domain'])
+      '''
+        INSERT INTO servers
+          ("user", password, domain, db_user, db_password, database)
+        VALUES
+          (%s, %s, %s, %s, %s, %s)
+      ''',
+      (
+        data['user'],
+        data['password'],
+        data['domain'],
+        data['db_user'],
+        data['db_password'],
+        data['database']
+      )
     )
 
     response = jsonify({"messaage":  "succesful crated"})
