@@ -9,7 +9,8 @@ class Postgres:
       password="aso",
       port="5434"
     )
-
+    self.conn.autocommit = True
+    
   def execute(self, query, values):
     cursor = self.conn.cursor()
 

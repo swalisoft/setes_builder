@@ -12,8 +12,6 @@ export class CreateServerComponent {
   constructor(private service: ServerService) {}
 
   onSubmit(f: NgForm) {
-    console.log(f.value);
-
     this.service.createServer(f.value).subscribe(resp => {
       console.log(resp);
     })
