@@ -7,11 +7,11 @@ class Postgres:
       host="127.0.0.1",
       user="aso",
       password="aso",
-      port="5434"
+      port="5432"
     )
     self.conn.autocommit = True
     
-  def execute(self, query, values):
+  def execute(self, query, values = ()):
     cursor = self.conn.cursor()
 
     cursor.execute(query, values)

@@ -15,6 +15,8 @@ def create_virtualhost(host, user):
   
   with open(f'/etc/apache2/vhosts.d/{host}.conf', 'w') as f:
     f.write(data)
+  os.system(f"echo '127.0.0.1       {host}'>> /etc/hosts")
+  os.system(f"")
   # os.system(f"sudo useradd -m {users} ") // reinicial apache
     
 #create_virtualhost("mita@gmail.com","mita")
@@ -32,9 +34,11 @@ def create_database(user,passwd,database):
 
 
 def create_custumer(user, password, host, dbUser, dbPassword, database):
-  create_database(dbUser,dbPassword,database)
   create_server_user(password,user)
   create_virtualhost(host,user)
+  create_database(dbUser,dbPassword,database)
+
+  
 
 
-#create_custumer('joel', '1234', 'www.dolores.es', 'dolores', '5432', 'taller_dolores')
+create_custumer('Ana', '1234', 'www.dolores.es', 'Ana', '5432', 'taller_Ana')
