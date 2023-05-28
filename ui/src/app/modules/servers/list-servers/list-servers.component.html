@@ -8,7 +8,7 @@
         <th scope="col">Dominio</th>
         <th scope="col">Usuario de la based de datos</th>
         <th scope="col">Base de datos</th>
-        <th scope="col">Accio</th> 
+        <th scope="col">Acción</th>
       </tr>
     </thead>
     <tbody>
@@ -16,11 +16,13 @@
         <td>{{item[0]}}</td>
         <td>{{item[1]}}</td>
         <td>{{item[2]}}</td>
-        <td>{{item[3]}}</td> 
-          <button (click)="editServer(item)" class="btn btn-primary">Editar</button>  
-          <button (click)="deleteServer(item)" class="btn btn-danger">Eliminar</button> 
+        <td>{{item[3]}}</td>
+        <td>
+          <button (click)="deleteServer(item[0])" class="btn btn-danger">Eliminar</button>
         </td>
       </tr>
     </tbody>
   </table>
+
+  <a routerLink="/servers/create" class="btn btn-primary">Agregar Servidor</a>
 </div>

@@ -18,7 +18,9 @@ export class ListServersComponent {
     this.getServers();
   }
 
-  deleteServer(id: number) { }
+  deleteServer(id: number) {
+
+  }
 
   getServers() {
     this.service.fetchServers().subscribe(resp => {

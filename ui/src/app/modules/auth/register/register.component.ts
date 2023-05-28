@@ -17,9 +17,9 @@ export class RegisterComponent {
 
   onSubmit(f: NgForm) {
     console.log(f.value);
-
+    
     this.service.register(f.value).subscribe(resp => {
-      this.router.navigate(['/login']);
+    this.router.navigate(['login']);
     })
   }
 
