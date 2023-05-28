@@ -9,13 +9,14 @@ CORS(app)
 
 postgres = Postgres()
 
-@app.route('/servers', methods=['GET', 'POST'])
+@app.route('/servers', methods=['GET', 'POST', 'DELETE'])
 def servers():
-  print(users)
-  # print(request.get_json())
-
   if request.method == 'GET':
-    servers = postgres.fetch_all('SELECT * FROM servers')
+    user_id = request.args.get('user_id')
+    servers = postgres.fetch_all(
+      'SELECT * FROM servers WHERE user_id = %s',
+      (user_id)
+    )
     response = jsonify(servers)
 
     return response
@@ -23,8 +24,20 @@ def servers():
     data = request.get_json()
 
     postgres.execute(
-      'INSERT INTO servers(name, password) VALUES(%s, %s)',
-      (data['title'], data['domain'])
+      '''
+        INSERT INTO servers
+          ("user", password, domain, db_user, db_password, database)
+        VALUES
+          (%s, %s, %s, %s, %s, %s)
+      ''',
+      (
+        data['user'],
+        data['password'],
+        data['domain'],
+        data['db_user'],
+        data['db_password'],
+        data['database']
+      )
     )
 
     response = jsonify({"messaage":  "succesful crated"})
