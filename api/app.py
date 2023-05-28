@@ -36,18 +36,14 @@ def servers():
         data['domain'],
         data['db_user'],
         data['db_password'],
-        data['database']
+        data['database'],
+        data['user_id']
       )
     )
 
     response = jsonify({"messaage":  "succesful crated"})
 
     return response
-
-@app.route('/users')
-def users():
-  # guardar en la base de datao
-  return 'Hello Work'
 
 @app.route('/login', methods=['POST'])
 def login():
