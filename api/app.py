@@ -9,7 +9,15 @@ CORS(app)
 
 postgres = Postgres()
 
-@app.route('/servers', methods=['GET', 'POST', 'DELETE'])
+@app.route('/servers/<int:id>', methods=['DELETE'])
+def deleteServer(id):
+    postgres.execute(f'DELETE FROM servers WHERE id = {id}')
+      
+    response = jsonify("Deleted")
+
+    return response
+
+@app.route('/servers', methods=['GET', 'POST'])
 def servers():
   if request.method == 'GET':
     user_id = request.args.get('user_id')
