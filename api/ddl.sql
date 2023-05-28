@@ -18,3 +18,5 @@ CREATE TABLE servers(
 
   FOREIGN KEY(user_id) REFERENCES users(id) ON DELETE CASCADE
 );
+
+SELECT * FROM servers WHERE user_id = 2

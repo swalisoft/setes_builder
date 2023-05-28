@@ -38,7 +38,6 @@ def create_custumer(user, password, host, dbUser, dbPassword, database):
   create_virtualhost(host,user)
   create_database(dbUser,dbPassword,database)
 
-  
 
 
 create_custumer('Ana', '1234', 'www.dolores.es', 'Ana', '5432', 'taller_Ana')

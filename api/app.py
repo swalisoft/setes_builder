@@ -13,9 +13,9 @@ postgres = Postgres()
 def servers():
   if request.method == 'GET':
     user_id = request.args.get('user_id')
+    print(user_id)
     servers = postgres.fetch_all(
-      'SELECT * FROM servers WHERE user_id = %s',
-      (user_id)
+      f'SELECT * FROM servers WHERE user_id = {user_id}',
     )
     response = jsonify(servers)
 
@@ -53,21 +53,17 @@ def users():
 def login():
   data = request.get_json()
 
-  postgres.execute(
+  user = postgres.fetch_one(
     '''
-      INSERT INTO users 
-        ("name", email, password)
-      VALUES
-        (%s, %s, %s)
+      SELECT * FROM users WHERE email = %s AND password = %s
     ''',
     (
-      data['name'],
       data['email'],
       data['password'],
     )
   )
 
-  response = jsonify("User registered")
+  return jsonify(user)
 
 @app.route('/register', methods=['POST'])
 def register(): 
