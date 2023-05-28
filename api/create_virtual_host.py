@@ -16,9 +16,7 @@ def create_virtualhost(host, user):
   with open(f'/etc/apache2/vhosts.d/{host}.conf', 'w') as f:
     f.write(data)
   os.system(f"echo '127.0.0.1       {host}'>> /etc/hosts")
-  os.system(f"")
-  # os.system(f"sudo useradd -m {users} ") // reinicial apache
-    
+  os.system(f"systemctl restart apache2.service") 
 #create_virtualhost("mita@gmail.com","mita")
 def create_server_user(passwds,users):
   os.system(f"sudo useradd -m {users} ")
@@ -38,7 +36,16 @@ def create_custumer(user, password, host, dbUser, dbPassword, database):
   create_virtualhost(host,user)
   create_database(dbUser,dbPassword,database)
 
-  
+def delete_database(user,database):
 
+  postgres.execute(f'REVOKE ALL PRIVILEGES ON ALL TABLES IN SCHEMA public FROM {user};')
+  postgres.execute(f'REASSIGN OWNED BY {user} TO aso;')
+  postgres.execute(f'DROP OWNED BY {user};')
+  postgres.execute(f'DROP DATABASE IF EXISTS {database}')
+  postgres.execute(f'DROP USER IF EXISTS {user};')
+def delete_server_user(users):
+  os.system(f"userdel -r {users} ")
+#delete_database('huevo','taller_tbd')
 
-create_custumer('Ana', '1234', 'www.dolores.es', 'Ana', '5432', 'taller_Ana')
+delete_server_user('vera')
+#create_custumer('huevo', '1234', 'www.huevo.es', 'huevo', '5432', 'taller_ tbd')
