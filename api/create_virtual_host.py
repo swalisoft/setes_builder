@@ -36,7 +36,10 @@ def create_custumer(user, password, host, dbUser, dbPassword, database):
   create_virtualhost(host,user)
   create_database(dbUser,dbPassword,database)
 
+<<<<<<< HEAD
 def delete_database(user,database):
+=======
+>>>>>>> a4b19a30ea0f2c541b4ca8919c6a1f6ac72c6a03
 
   postgres.execute(f'REVOKE ALL PRIVILEGES ON ALL TABLES IN SCHEMA public FROM {user};')
   postgres.execute(f'REASSIGN OWNED BY {user} TO aso;')

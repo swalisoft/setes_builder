@@ -19,7 +19,7 @@ class Postgres:
     cursor.close()
     self.conn.commit()
 
-  def fetch_all(self, query):
+  def fetch_all(self, query, values = ()):
     cursor = self.conn.cursor()
 
     cursor.execute(query)

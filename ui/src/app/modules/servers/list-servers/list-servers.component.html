@@ -1,28 +1,31 @@
+<div class="box">
 <div class="container">
-  <h1 class="text-center my-5">List Servers</h1>
+  <h1 class="text-center my-5">LISTA DE SERVIDORES</h1>
 
   <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let item of servers$ | async">
-      <th scope="row">{{item[0]}}</th>
-      <td>{{item[1]}}</td>
-      <td>{{item[2]}}</td>
-      <td>
-        <button
-          (click)="deleteServer(1)"
-          class="btn btn-danger"
-        >Delete</button> 
-      </td>
-    </tr>
-  </tbody>
-</table>
-</div>
+    <thead>
+      <tr>
+        <th scope="col">Usuario</th>
+        <th scope="col">Dominio</th>
+        <th scope="col">Usuario de la based de datos</th>
+        <th scope="col">Base de datos</th>
+        <th scope="col">Acción</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of servers$ | async">
+        <td>{{item[1]}}</td>
+        <td>{{item[2]}}</td>
+        <td>{{item[3]}}</td>
+        <td>{{item[4]}}</td>
+        <td>
+          <button (click)="deleteServer(item[0])" class="btn btn-danger">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 
+  <a routerLink="/servers/create" class="btn btn-primary">Agregar Servidor</a>
+  <a routerLink="" class="btn btn-secondary ml-3">Salir</a>
+</div>
+</div>

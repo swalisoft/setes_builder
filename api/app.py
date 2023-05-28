@@ -9,13 +9,24 @@ CORS(app)
 
 postgres = Postgres()
 
-@app.route('/servers', methods=['GET', 'POST', 'DELETE'])
+@app.route('/servers/<int:id>', methods=['DELETE'])
+def deleteServer(id):
+  server = postgres.fetch_one(f'SELECT "database", "user" FROM servers WHERE id = {id}')
+
+  print(server)
+
+  postgres.execute(f'DELETE FROM servers WHERE id = {id}')
+    
+  response = jsonify("Deleted")
+
+  return response
+
+@app.route('/servers', methods=['GET', 'POST'])
 def servers():
   if request.method == 'GET':
     user_id = request.args.get('user_id')
     servers = postgres.fetch_all(
-      'SELECT * FROM servers WHERE user_id = %s',
-      (user_id)
+      f'SELECT * FROM servers WHERE user_id = {user_id}',
     )
     response = jsonify(servers)
 
@@ -26,9 +37,9 @@ def servers():
     postgres.execute(
       '''
         INSERT INTO servers
-          ("user", password, domain, db_user, db_password, database)
+          ("user", password, domain, db_user, db_password, database, user_id)
         VALUES
-          (%s, %s, %s, %s, %s, %s)
+          (%s, %s, %s, %s, %s, %s, %s)
       ''',
       (
         data['user'],
@@ -36,7 +47,8 @@ def servers():
         data['domain'],
         data['db_user'],
         data['db_password'],
-        data['database']
+        data['database'],
+        data['user_id']
       )
     )
 
@@ -44,15 +56,43 @@ def servers():
 
     return response
 
-@app.route('/users')
-def users():
-  # guardar en la base de datao
-  return 'Hello Work'
-
 @app.route('/login', methods=['POST'])
 def login():
-  # guardar en la base de datao
-  return 'Hello Work'
+  data = request.get_json()
+
+  user = postgres.fetch_one(
+    '''
+      SELECT * FROM users WHERE email = %s AND password = %s
+    ''',
+    (
+      data['email'],
+      data['password'],
+    )
+  )
+
+  return jsonify(user)
+
+@app.route('/register', methods=['POST'])
+def register(): 
+  data = request.get_json()
+
+  postgres.execute(
+    '''
+      INSERT INTO users 
+        ("name", email, password)
+      VALUES
+        (%s, %s, %s)
+    ''',
+    (
+      data['name'],
+      data['email'],
+      data['password'],
+    )
+  )
+
+  response = jsonify("User registered")
+
+  return response
 
 if __name__ == '__main__':
   app.run(debug=True)

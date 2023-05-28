@@ -1,0 +1,55 @@
+.box {
+  background-color: #222;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  background-color: rgb(200, 200, 34);
+  background-color: #222222;
+  color: #fff;
+  padding: 20px;
+}
+
+.container h1 {
+  margin-top: 0;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  padding: 10px;
+  border: 1px solid #555555;
+}
+
+.table th {
+  background-color: #333333;
+  color: #fff;
+}
+
+.table td {
+  background-color: #444444;
+}
+
+.btn {
+  padding: 8px 16px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-danger {
+  background-color: #d9534f;
+  color: #fff;
+}
+
+.btn-danger:hover {
+  background-color: #c9302c;
+}
