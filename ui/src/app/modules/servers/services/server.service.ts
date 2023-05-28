@@ -8,8 +8,9 @@ export class ServerService {
   constructor(private http: HttpClient) { }
 
   fetchServers() {
+    const userId = localStorage.getItem('user_id');
     return this.http.get<any[][]>(
-      'http://localhost:5000/servers'
+      `http://localhost:5000/servers?user_id=${userId}`
     )
   }
 
