@@ -13,7 +13,6 @@ postgres = Postgres()
 def servers():
   if request.method == 'GET':
     user_id = request.args.get('user_id')
-    print(user_id)
     servers = postgres.fetch_all(
       f'SELECT * FROM servers WHERE user_id = {user_id}',
     )

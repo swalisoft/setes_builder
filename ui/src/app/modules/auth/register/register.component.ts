@@ -19,7 +19,7 @@ export class RegisterComponent {
     console.log(f.value);
 
     this.service.register(f.value).subscribe(resp => {
-      this.router.navigate(['login']);
+      this.router.navigate(['/login']);
     })
   }
 
