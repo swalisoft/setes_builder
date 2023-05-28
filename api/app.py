@@ -26,7 +26,7 @@ def servers():
     postgres.execute(
       '''
         INSERT INTO servers
-          ("user", password, domain, db_user, db_password, database)
+          ("user", password, domain, db_user, db_password, database, user_id)
         VALUES
           (%s, %s, %s, %s, %s, %s)
       ''',
