@@ -51,8 +51,45 @@ def users():
 
 @app.route('/login', methods=['POST'])
 def login():
-  # guardar en la base de datao
-  return 'Hello Work'
+  data = request.get_json()
+
+  postgres.execute(
+    '''
+      INSERT INTO users 
+        ("name", email, password)
+      VALUES
+        (%s, %s, %s)
+    ''',
+    (
+      data['name'],
+      data['email'],
+      data['password'],
+    )
+  )
+
+  response = jsonify("User registered")
+
+@app.route('/register', methods=['POST'])
+def register(): 
+  data = request.get_json()
+
+  postgres.execute(
+    '''
+      INSERT INTO users 
+        ("name", email, password)
+      VALUES
+        (%s, %s, %s)
+    ''',
+    (
+      data['name'],
+      data['email'],
+      data['password'],
+    )
+  )
+
+  response = jsonify("User registered")
+
+  return response
 
 if __name__ == '__main__':
   app.run(debug=True)

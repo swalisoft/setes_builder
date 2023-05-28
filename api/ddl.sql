@@ -13,8 +13,8 @@ CREATE TABLE servers(
   "domain" varchar(20),
   "db_user" VARCHAR(20),
   "db_password" VARCHAR(20),
-  "database" VARCHAR(20)
+  "database" VARCHAR(20),
   "user_id" INTEGER,
 
-  FOREIGN KEY(user_id) REFERENCES users(id) ON DELETE CASCADE,
+  FOREIGN KEY(user_id) REFERENCES users(id) ON DELETE CASCADE
 );
