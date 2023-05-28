@@ -14,6 +14,12 @@ export class ServerService {
     )
   }
 
+  deleteServer(id: number) {
+    return this.http.delete(
+      `http://localhost:5000/servers/${id}`
+    )
+  }
+
   createServer(values = {}) {
     return this.http.post<string>(
       'http://localhost:5000/servers',
