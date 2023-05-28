@@ -17,7 +17,10 @@ export class ServerService {
   createServer(values = {}) {
     return this.http.post<string>(
       'http://localhost:5000/servers',
-      JSON.stringify(values),
+      JSON.stringify({
+        ...values,
+        user_id: localStorage.getItem('user_id')
+      }),
       {
         headers: {
           'Content-Type': 'application/json'
