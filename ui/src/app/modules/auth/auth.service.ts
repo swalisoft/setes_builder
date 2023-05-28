@@ -10,7 +10,7 @@ export class AuthService {
 
   login(values = {}) {
     return this.http.post<string>(
-      'http://localhost:5000/login',
+      'http://192.168.193.128:5000/login',
       JSON.stringify(values),
       {
         headers: {
@@ -22,7 +22,7 @@ export class AuthService {
   
   register(values = {}) {
     return this.http.post<string>(
-      'http://localhost:5000/register',
+      'http://192.168.193.128:5000/register',
       JSON.stringify(values),
       {
         headers: {

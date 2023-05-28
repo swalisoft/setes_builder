@@ -1,11 +1,11 @@
 from flask import Flask, request, jsonify
 from Postgres import Postgres
+from create_virtual_host import create_custumer, delete_custumer
 
 from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
 CORS(app)
-# app.config['CORS_HEADERS'] = 'Content-Type'
 
 postgres = Postgres()
 
@@ -13,10 +13,10 @@ postgres = Postgres()
 def deleteServer(id):
   server = postgres.fetch_one(f'SELECT "database", "user" FROM servers WHERE id = {id}')
 
-  print(server)
-
   postgres.execute(f'DELETE FROM servers WHERE id = {id}')
-    
+
+  delete_custumer(server[1], server[0])
+
   response = jsonify("Deleted")
 
   return response
@@ -50,6 +50,15 @@ def servers():
         data['database'],
         data['user_id']
       )
+    )
+
+    create_custumer(
+      data['user'],
+      data['password'],
+      data['domain'],
+      data['db_user'],
+      data['db_password'],
+      data['database']
     )
 
     response = jsonify({"messaage":  "succesful crated"})

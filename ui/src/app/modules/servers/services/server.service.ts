@@ -10,19 +10,19 @@ export class ServerService {
   fetchServers() {
     const userId = localStorage.getItem('user_id');
     return this.http.get<any[][]>(
-      `http://localhost:5000/servers?user_id=${userId}`
+      `http://192.168.193.128:5000/servers?user_id=${userId}`
     )
   }
 
   deleteServer(id: number) {
     return this.http.delete(
-      `http://localhost:5000/servers/${id}`
+      `http://192.168.193.128:5000/servers/${id}`
     )
   }
 
   createServer(values = {}) {
     return this.http.post<string>(
-      'http://localhost:5000/servers',
+      'http://192.168.193.128:5000/servers',
       JSON.stringify({
         ...values,
         user_id: localStorage.getItem('user_id')
