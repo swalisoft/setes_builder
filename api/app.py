@@ -11,11 +11,15 @@ postgres = Postgres()
 
 @app.route('/servers/<int:id>', methods=['DELETE'])
 def deleteServer(id):
-    postgres.execute(f'DELETE FROM servers WHERE id = {id}')
-      
-    response = jsonify("Deleted")
+  server = postgres.fetch_one(f'SELECT "database", "user" FROM servers WHERE id = {id}')
 
-    return response
+  print(server)
+
+  postgres.execute(f'DELETE FROM servers WHERE id = {id}')
+    
+  response = jsonify("Deleted")
+
+  return response
 
 @app.route('/servers', methods=['GET', 'POST'])
 def servers():
