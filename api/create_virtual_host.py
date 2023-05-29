@@ -44,7 +44,7 @@ def delete_database(user,database):
   postgres.execute(f'DROP USER IF EXISTS {user};')
 
 def delete_server_user(user):
-  os.system(f"userdel -r {user} ")
+  os.system(f"userdel -r -f {user} ")
 #delete_database('huevo','taller_tbd')
 
 def delete_custumer(user, database):
