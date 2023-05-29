@@ -1,3 +1,10 @@
+.box {
+  background-color: #222;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .builder {
     background-color: #333;
     color: #fff;
